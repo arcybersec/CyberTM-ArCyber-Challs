@@ -26,8 +26,9 @@ We could use a RE tool like [Ghidra]('https://ghidra-sre.org/') to skip the pass
 
 ### Challenge Summary
 
-In this challenge we are presented the website of the car retailer GerSam, where we need to find the flag. \ 
-[2](../Photos/2.png) \
+In this challenge we are presented the website of the car retailer GerSam, where we need to find the flag.\
+
+![2](../Photos/2.png) 
 
 #### Solving Steps
 - Looking in the footer, we can find a **Youtube Link** that goes to the old Toyota Corolla (*legendary-meme-status*) commercial. \
