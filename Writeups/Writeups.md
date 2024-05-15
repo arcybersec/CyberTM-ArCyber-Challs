@@ -21,3 +21,19 @@ The easiest solution to the problem is to use `GDB` to jump to the function that
 
 ##### Alternative solution:
 We could use a RE tool like [Ghidra]('https://ghidra-sre.org/') to skip the password validation phase, patching the password equality comparison with `NOP` instructions, which basically mean: **No operation**, proceeding to jump to the **generate_code()** function.
+
+# GerSam
+
+### Challenge Summary
+
+In this challenge we are presented the website of the car retailer GerSam, where we need to find the flag. \ 
+[2](../Photos/2.png) \
+
+#### Solving Steps
+- Looking in the footer, we can find a **Youtube Link** that goes to the old Toyota Corolla (*legendary-meme-status*) commercial. \
+- We can deduce from here since it's a car selling website and there is a great emphasis on the Toyota Corolla model, not only in the footer, but in the info section as well that it might have something to do with this specific car model. \
+- We navigate to the cars page and see a lot of car cards show up. We scroll down to the Toyota Corolla model and click the button to view it. \
+On the car's page we can see a bunch of details about the car but not quite the flag.
+- We see some button's that say when *clicked* that their functionality has not been implemented yet... but maybe that is the case just on the frontend and data is still sent for their later usage
+- In the network section we can see that this page does an **API** request to get the data about the model so we decide to investigate this in **Burp** to see if it's not leaking any data.
+- Once opened in burp, we can see that the **API** is sending more json data then needed for the page rendering, such as details for the buttons that are not working and the **flag** :)
