@@ -37,3 +37,39 @@ On the car's page we can see a bunch of details about the car but not quite the 
 - We see some button's that say when *clicked* that their functionality has not been implemented yet... but maybe that is the case just on the frontend and data is still sent for their later usage
 - In the network section we can see that this page does an **API** request to get the data about the model so we decide to investigate this in **Burp** to see if it's not leaking any data.
 - Once opened in burp, we can see that the **API** is sending more json data then needed for the page rendering, such as details for the buttons that are not working and the **flag** :)
+
+# SysAdmin 
+
+### Challenge Summary
+
+In this challenge we are given a **GET** endpoint to an **API** that sounds like it is used for the SysAdmin of a certain company to remotely manage their systems. \
+
+![3](../Photos/3.png) 
+
+#### Solving Steps
+
+- We can conclude this is a **JSON** api since when fetching / we get some json response back.
+- We can observe the fact that in the json data send to us it mentions the fact that the  `send-command` endpoint is an open door to malicious commands and the fact that CORS is not strict.
+- We do a `POST` request on the `send-command` endpoint with the body consisting of the `command` key with the value being the command we want to execute (for example `whoami`) but we see that we are not allowed to do that if we don't provide some sort of authentication since it prompts us with `Unauthorized`
+- We see in the first response on `GET` / that: 
+> the attackers have **multiple** methods of gaining the same information
+- This statement is hinting us that maybe another `HTTP` request method might not be handled securely.
+We try a `PUT` request wit the payload:
+```bash
+curl -X PUT http://127.0.0.1:5000/send-command \
+-H "Content-Type: application/json" \
+-d '{"command":"ls"}'
+```
+- We get the response:
+```bash
+{"output":"api.py\nflag.jpg\ninfo.txt"}
+```
+- We know that there is an image called `flag.jpg` so maybe our flag is there and perhaps this is some sort of *remote-stegano* challenge.
+- We send the payload:
+```bash
+curl -X PUT http://127.0.0.1:5000/send-command
+-H "Content-Type: application/json" 
+-d '{"command":"exiftool flag.jpg | grep CYBERTM"}'
+```
+- And we get our flag :)
+
