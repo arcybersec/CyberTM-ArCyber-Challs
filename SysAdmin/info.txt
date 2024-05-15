@@ -1,0 +1,20 @@
+Hey there,
+
+Just a heads-up on the API security:
+
+    Authentication's sorted with a token.
+    Routes are in place for info retrieval and command execution. Watch out, though, **/send-command** could be an open door for malicious commands.
+    Error handling's basic, but not too revealing. Could use some beefing up.
+    CORS is enabled, but it's wide open. Might wanna tighten that up.
+
+Suggestions:
+
+    Secure token handling: Think JWT or OAuth2.
+    Tighten up input validation to block any funny business.
+    Consider role-based access for added security layers.
+    Keep sensitive info out of the codebase.
+	Remember that attackers have multiple **methods** of ganing the same information about us
+
+Stay sharp! Let's beef up that security.
+
+Cheers,

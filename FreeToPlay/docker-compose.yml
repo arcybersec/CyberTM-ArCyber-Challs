@@ -1,0 +1,23 @@
+version: '2.1'
+services:
+        ftp:
+                image: delfer/alpine-ftp-server
+                ports: 
+                        - '3900:3900'
+                network_mode: host
+                environment: 
+                        - USERS=admin|12345
+                volumes:
+                        - ./chall_folder:/ftp/admin
+
+        web: 
+                build: ./backend
+                environment:
+                        FLASK_ENV: development
+                command: ["flask", "run", "--host=192.168.122.35"]
+                volumes:
+                        - ./backend:/backend
+                stop_signal: SIGINT
+                network_mode: host
+                ports:
+                        - '5000:5000'

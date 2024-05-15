@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QrFun</title>
+</head>
+<body style="margin: 0; padding: 0;">
+
+    <!-- TODO: Error Handling!  si eventual sa facem pagina mai draguta :) -->
+
+    <div style="width: 100vw; padding: 10px; height:  5rem; background-color: pink; display: flex; flex-direction: row; justify-items: center; align-items: start;">
+        <h1 style="color: white;">QrFun - Qr Generator Service </h1>
+    </div>
+    <h1 id="flag-text" style="padding-left: 20px;"></h1>
+    
+    <style>
+        h1{
+          font-family: "Space Grotesk", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 700;
+          font-style: normal;
+        }
+    </style>
+
+    <script>
+        const qrId = new URLSearchParams(window.location.search).get('qrId');
+        console.log(qrId);
+        fetch(`http://127.0.0.1:5000/api/qr/${qrId}`)
+            .then((res)=>res.json())
+            .then(res => {
+                if(qrId)
+                    document.getElementById('flag-text').innerHTML = res.flag;
+                if(res.url)
+                    window.location.href = "http://"+res.url;
+            })
+            
+
+        
+    </script>
+</body>
+</html>

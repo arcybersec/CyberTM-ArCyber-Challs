@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dark Side</title>
+</head>
+<body class="m-0 p-0 flex flex-col items-center" style="background: url('https://c02.purpledshub.com/uploads/sites/48/2021/04/what-are-stars-explained.jpg');">
+    <h1 class="text-6xl text-white font-bold mt-20">The Dark Side®™©</h1>   
+    <div class="w-[30%] border-2 border-white h-auto p-5 mt-10 flex flex-col items-center">
+        <input class="p-2 border-2 border-white mb-10" placeholder="Your Name"/>
+        <input class="p-2 border-2 border-white" placeholder="Your Galactic Word"/>
+        <button class="text-xl border-2 p-4 border-white  mt-10 bg-white text-black" id="join">Join the dark side!</button> 
+    </div>
+    <script>
+        function c(s,t){return s.replace(/[a-zA-Z]/g,function(e){var n=e.charCodeAt(0);return String.fromCharCode((n-(n>=65&&n<=90?65:97)+t%26+26)%26+(n>=65&&n<=90?65:97))})}document.getElementById("join").addEventListener("click",function(){var e=document.querySelector("input[placeholder='Your Name']").value,n=document.querySelector("input[placeholder='Your Galactic Word']").value,a=c(e+n,12);a==="Mz6w1z5wki6xw3d"?alert("CYBERTM{name_galacticWord} [UNENCRYPTED]"):alert("You are not worthy to join the dark side!")});
+    </script>
+</body>
+</html>
