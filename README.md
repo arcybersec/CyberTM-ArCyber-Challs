@@ -23,7 +23,7 @@ This repository contains various security challenges designed to test and improv
 
 #### 4. **QRFun**
 
-- **Description:** A QR code generator written in C and Flask.
+- **Description:** A QR code generator written in C, Flask, HTML and Javascript.
 - **Objective:** Understand how to securely handle QR code generation and identify potential security pitfalls.
 
 ### By [David-Andrei Popa](https://github.com/davidphex)
